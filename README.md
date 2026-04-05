@@ -1,5 +1,7 @@
 # ひらがな道場 — Hiragana Dōjō
 
+**Live → [hiragana-dojo.netlify.app](https://hiragana-dojo.netlify.app/)**
+
 A Japanese hiragana practice app built with React, TypeScript, and Vite. No backend — everything runs in the browser and persists in `localStorage`.
 
 ## Features
