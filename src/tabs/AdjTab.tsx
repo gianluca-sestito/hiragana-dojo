@@ -5,6 +5,7 @@ import { useDrill } from "../logic/useDrill";
 import { generateAdjExercise, getAdjDict } from "../logic/adjectives";
 import { ADJ_FORMS } from "../data/adjectives";
 import type { AdjExercise } from "../logic/adjectives";
+import { PlayButton } from "../components/PlayButton";
 
 const TYPE_LABELS: Record<AdjExercise["type"], string> = {
   en2jp: "Translate →", jp2en: "← Meaning", transform: "Transform", classify: "Classify",
@@ -101,8 +102,11 @@ export default function AdjTab() {
         <span style={S.verbTypeTag}>{TYPE_LABELS[exercise.type]}</span>
 
         {isPromptJP ? (
-          <div style={{ textAlign: "center" }}>
-            <div style={S.verbPromptJP}>{exercise.prompt}</div>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+            <div style={S.playRow}>
+              <div style={S.verbPromptJP}>{exercise.prompt}</div>
+              <PlayButton text={exercise.prompt} size="sm" />
+            </div>
             {showRomaji && <div style={S.romajiLine}>{toRomaji(exercise.prompt)}</div>}
             {exercise.promptSub && <div style={S.adjTransformHint}>{exercise.promptSub}</div>}
           </div>

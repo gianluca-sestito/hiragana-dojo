@@ -3,6 +3,7 @@ import { S } from "../styles";
 import { toRomaji } from "../logic/romaji";
 import { FILL_POOL } from "../data/fill";
 import type { FillExercise } from "../data/fill";
+import { PlayButton } from "../components/PlayButton";
 
 type Phase = "pick" | "correct" | "wrong";
 
@@ -100,6 +101,7 @@ export default function FillTab() {
 
   const ex = exercises[currentIdx];
   const parts = ex.sentence.split("＿＿＿");
+  const speakText = ex.sentence.replace("＿＿＿", phase === "correct" ? ex.answer : "　");
 
   return (
     <div style={S.fillWrap}>
@@ -107,7 +109,10 @@ export default function FillTab() {
         <div style={{ ...S.fillProgressFill, width: `${(currentIdx / exercises.length) * 100}%` }} />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
-        <div style={S.fillCounter}>{currentIdx + 1} / {exercises.length}</div>
+        <div style={{ ...S.playRow }}>
+          <div style={S.fillCounter}>{currentIdx + 1} / {exercises.length}</div>
+          <PlayButton text={speakText} size="sm" />
+        </div>
         <button
           onClick={() => setShowRomaji(v => !v)}
           style={{ ...S.romajiToggle, ...(showRomaji ? S.romajiToggleOn : {}) }}

@@ -3,6 +3,7 @@ import { S } from "../styles";
 import { toRomaji } from "../logic/romaji";
 import { READ_SCENARIOS, READ_TOPIC_LABELS } from "../data/fill";
 import type { ReadScenario } from "../data/fill";
+import { PlayButton } from "../components/PlayButton";
 
 type QuizPhase = "idle" | "correct" | "wrong";
 
@@ -74,7 +75,10 @@ export default function ReadTab() {
   return (
     <div style={S.readWrap}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
-        <span style={S.readTitle}>{scenario.title}</span>
+        <div style={S.playRow}>
+          <span style={S.readTitle}>{scenario.title}</span>
+          <PlayButton text={scenario.text} size="sm" />
+        </div>
         <button
           onClick={() => setShowRomaji(v => !v)}
           style={{ ...S.romajiToggle, ...(showRomaji ? S.romajiToggleOn : {}) }}

@@ -5,6 +5,7 @@ import { useDrill } from "../logic/useDrill";
 import { generateVerbExercise } from "../logic/verbs";
 import { VERB_FORMS } from "../data/verbs";
 import type { VerbExercise } from "../logic/verbs";
+import { PlayButton } from "../components/PlayButton";
 
 const TYPE_LABELS: Record<VerbExercise["type"], string> = {
   en2jp: "Translate →", jp2en: "← Meaning", jp2form: "What form?", stem: "Which verb?",
@@ -90,8 +91,11 @@ export default function VerbsTab() {
         <span style={S.verbTypeTag}>{TYPE_LABELS[exercise.type]}</span>
 
         {isPromptJP ? (
-          <div style={{ textAlign: "center" }}>
-            <div style={S.verbPromptJP}>{exercise.prompt}</div>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+            <div style={S.playRow}>
+              <div style={S.verbPromptJP}>{exercise.prompt}</div>
+              <PlayButton text={exercise.prompt} size="sm" />
+            </div>
             {showRomaji && <div style={S.romajiLine}>{toRomaji(exercise.prompt)}</div>}
           </div>
         ) : (
