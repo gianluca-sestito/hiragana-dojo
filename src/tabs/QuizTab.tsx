@@ -4,6 +4,7 @@ import { isCorrectRomaji } from "../logic/romaji";
 import { pickNextChar } from "../logic/quiz";
 import { ALL_HIRAGANA } from "../data/hiragana";
 import type { AppData } from "../logic/storage";
+import { PlayButton } from "../components/PlayButton";
 
 interface Props {
   data: AppData;
@@ -23,7 +24,6 @@ export default function QuizTab({ data, update }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const recentRef = useRef<string[]>([]);
   const retryQueueRef = useRef<Array<{ char: typeof quizChar; due: number }>>([]);
-  // Tracks sessionScore.total without adding it to nextChar's deps
   const totalRef = useRef(0);
 
   const weakCount = useMemo(
@@ -38,7 +38,6 @@ export default function QuizTab({ data, update }: Props) {
     if (phase === "answer") inputRef.current?.focus();
   }, [phase, quizChar]);
 
-  // Fix: store timeoutId so we can clear it if phase changes before 400ms
   useEffect(() => {
     if (!streakPop) return;
     const id = setTimeout(() => setStreakPop(false), 400);
@@ -175,6 +174,7 @@ export default function QuizTab({ data, update }: Props) {
 
       <div style={{ ...S.card, ...(phase === "wrong" ? S.cardWrong : phase === "correct" ? S.cardCorrect : {}) }}>
         <div style={S.charBig}>{quizChar.h}</div>
+        <PlayButton text={quizChar.h} />
 
         {phase === "correct" && (
           <div style={S.correctBanner}>

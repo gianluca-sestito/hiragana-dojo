@@ -11,6 +11,7 @@ export const CSS = `
   @keyframes streakPop { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
   @keyframes streakGlow { 0%,100% { box-shadow: 0 0 8px rgba(200,75,49,0.2); } 50% { box-shadow: 0 0 20px rgba(200,75,49,0.4); } }
   @keyframes streakPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } }
+  @keyframes micPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(200,75,49,0.3); } 50% { box-shadow: 0 0 0 10px rgba(200,75,49,0); } }
   input:focus { outline: none; border-color: #C84B31 !important; box-shadow: 0 0 0 3px rgba(200,75,49,0.08) !important; }
   button { cursor: pointer; transition: all 0.15s ease; }
   button:active { transform: scale(0.97); }
@@ -197,4 +198,36 @@ export const S: Styles = {
   numRefH: { fontSize: 14, fontWeight: 500 },
   numRefR: { fontSize: 9, color: "#7C9AB5", fontFamily: "'Outfit', sans-serif" },
   numRefAlt: { fontSize: 9, color: C.inkMuted, fontStyle: "italic" },
+
+  playRow: { display: "flex", alignItems: "center", gap: 8 },
+
+  speakWrap: { maxWidth: 440, margin: "0 auto", padding: "16px", display: "flex", flexDirection: "column", gap: 14, animation: "fadeIn 0.25s ease" },
+  speakHeader: { display: "flex", flexDirection: "column", alignItems: "center", gap: 4, marginBottom: 4 },
+  speakTitle: { fontSize: 20, fontWeight: 600 },
+  speakSub: { fontSize: 13, color: C.inkMuted, textAlign: "center" },
+  speakMicRow: { display: "flex", flexDirection: "column", alignItems: "center", gap: 8 },
+  speakListening: { fontSize: 13, color: C.accent, fontWeight: 600, letterSpacing: "0.04em" },
+  speakMicHint: { fontSize: 11, color: C.inkMuted, fontStyle: "italic" },
+  speakNoMic: { fontSize: 12, color: C.inkMuted, textAlign: "center", fontStyle: "italic", maxWidth: 260 },
+  speakOrRow: { display: "flex", alignItems: "center", gap: 10, width: "100%" },
+  speakOrLine: { flex: 1, height: 1, backgroundColor: C.border },
+  speakOrText: { fontSize: 11, color: C.inkMuted, whiteSpace: "nowrap", textTransform: "uppercase", letterSpacing: "0.08em" },
+
+  speakFeedback: { minHeight: 20, display: "flex", alignItems: "center", justifyContent: "center" },
+  speakInterim: { fontSize: 13, color: C.inkMuted, fontStyle: "italic" },
+  speakHeard: { fontSize: 12, color: C.warn, fontWeight: 500 },
+
+  speakCatGrid: { display: "grid", gridTemplateColumns: "1fr", gap: 10, width: "100%" },
+  speakCatBtn: { display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 3, padding: "18px 20px", borderRadius: 16, border: `1.5px solid ${C.border}`, backgroundColor: C.white, fontFamily: font, cursor: "pointer", textAlign: "left", transition: "all 0.15s" },
+  speakCatEmoji: { fontSize: 28, lineHeight: 1, marginBottom: 2 },
+  speakCatLabel: { fontSize: 17, fontWeight: 600, color: C.ink },
+  speakCatDesc: { fontSize: 13, color: C.inkSoft },
+  speakCatCount: { fontSize: 11, color: C.inkMuted, marginTop: 2 },
+
+  speakDrillHeader: { display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: 8 },
+  speakProgress: { fontSize: 13, color: C.inkMuted, fontWeight: 500 },
+
+  speakItemHint: { fontSize: 13, color: C.inkMuted, fontWeight: 500, letterSpacing: "0.02em" },
+  speakHintBtn: { fontSize: 11, color: C.inkMuted, background: "none", border: `1px dashed ${C.border}`, borderRadius: 8, padding: "3px 12px", fontFamily: font, cursor: "pointer" },
+  speakItemText: { fontSize: 52, fontWeight: 500, lineHeight: 1.2, textAlign: "center", letterSpacing: "0.04em" },
 };

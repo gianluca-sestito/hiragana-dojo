@@ -9,8 +9,9 @@ import ReadTab from "./tabs/ReadTab";
 import VerbsTab from "./tabs/VerbsTab";
 import AdjTab from "./tabs/AdjTab";
 import NumsTab from "./tabs/NumsTab";
+import SpeakTab from "./tabs/SpeakTab";
 
-type View = "quiz" | "fill" | "read" | "verbs" | "adj" | "nums" | "chart";
+type View = "quiz" | "fill" | "read" | "verbs" | "adj" | "nums" | "speak" | "chart";
 
 const NAV: Array<{ view: View; label: string }> = [
   { view: "quiz",  label: "⚡ Speed" },
@@ -19,6 +20,7 @@ const NAV: Array<{ view: View; label: string }> = [
   { view: "verbs", label: "🔄 Verbs" },
   { view: "adj",   label: "✨ Adj" },
   { view: "nums",  label: "🔢 Nums" },
+  { view: "speak", label: "🎤 Speak" },
   { view: "chart", label: "📋 Chart" },
 ];
 
@@ -87,6 +89,7 @@ export default function App() {
         {view === "verbs" && <VerbsTab />}
         {view === "adj"   && <AdjTab />}
         {view === "nums"  && <NumsTab />}
+        {view === "speak" && <SpeakTab />}
         {view === "chart" && <ChartTab stats={data.stats} />}
       </main>
     </div>
