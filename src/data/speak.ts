@@ -78,7 +78,7 @@ const VOCAB: SpeakItem[] = [
   { text: "はし",       hint: "chopsticks" },
   // nature & weather
   { text: "はな",       hint: "flower" },
-  { text: "き",         hint: "tree" },
+  { text: "もり",       hint: "forest" },
   { text: "そら",       hint: "sky" },
   { text: "つき",       hint: "moon" },
   { text: "ほし",       hint: "star" },
@@ -112,10 +112,10 @@ const VOCAB: SpeakItem[] = [
   { text: "ふね",       hint: "ship / boat" },
   // body
   { text: "あたま",     hint: "head" },
-  { text: "め",         hint: "eye" },
+  { text: "みみ",       hint: "ear" },
   { text: "はな",       hint: "nose" },
   { text: "くち",       hint: "mouth" },
-  { text: "て",         hint: "hand" },
+  { text: "ゆび",       hint: "finger" },
   { text: "あし",       hint: "foot / leg" },
   // school & work
   { text: "おんがく",   hint: "music" },
@@ -126,10 +126,8 @@ const VOCAB: SpeakItem[] = [
 
 const NUMBERS: SpeakItem[] = [
   { text: "いち",       hint: "1 — one" },
-  { text: "に",         hint: "2 — two" },
   { text: "さん",       hint: "3 — three" },
   { text: "よん",       hint: "4 — four" },
-  { text: "ご",         hint: "5 — five" },
   { text: "ろく",       hint: "6 — six" },
   { text: "なな",       hint: "7 — seven" },
   { text: "はち",       hint: "8 — eight" },

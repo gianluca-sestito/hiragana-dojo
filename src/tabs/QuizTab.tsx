@@ -17,7 +17,7 @@ export default function QuizTab({ data, update }: Props) {
   const [phase, setPhase] = useState<"answer" | "wrong" | "correct">("answer");
   const [sessionScore, setSessionScore] = useState({ correct: 0, total: 0 });
   const [weakOnly, setWeakOnly] = useState(false);
-  const [streak, setStreak] = useState(0);
+  const [streak, setStreak] = useState(() => data.currentStreak ?? 0);
   const [streakPop, setStreakPop] = useState(false);
 
   const [retryCount, setRetryCount] = useState(0);
@@ -79,11 +79,11 @@ export default function QuizTab({ data, update }: Props) {
         setStreak(newStreak);
         setStreakPop(true);
         const best = Math.max(newStreak, data.bestStreak ?? 0);
-        update({ stats, totalAnswered: data.totalAnswered + 1, totalCorrect: data.totalCorrect + 1, bestStreak: best });
+        update({ stats, totalAnswered: data.totalAnswered + 1, totalCorrect: data.totalCorrect + 1, bestStreak: best, currentStreak: newStreak });
         setPhase("correct");
       } else {
         setStreak(0);
-        update({ stats, totalAnswered: data.totalAnswered + 1 });
+        update({ stats, totalAnswered: data.totalAnswered + 1, currentStreak: 0 });
         const delay = 2 + Math.floor(Math.random() * 2);
         retryQueueRef.current.push({ char: quizChar, due: totalRef.current + delay });
         setRetryCount(retryQueueRef.current.length);
@@ -112,6 +112,7 @@ export default function QuizTab({ data, update }: Props) {
     setSessionScore({ correct: 0, total: 0 });
     totalRef.current = 0;
     setStreak(0);
+    update({ currentStreak: 0 });
     recentRef.current = [];
     retryQueueRef.current = [];
     setRetryCount(0);
@@ -119,7 +120,7 @@ export default function QuizTab({ data, update }: Props) {
   }
 
   function resetAllStats() {
-    update({ stats: {}, totalAnswered: 0, totalCorrect: 0, bestStreak: 0 });
+    update({ stats: {}, totalAnswered: 0, totalCorrect: 0, bestStreak: 0, currentStreak: 0 });
     setStreak(0);
     resetSession();
   }

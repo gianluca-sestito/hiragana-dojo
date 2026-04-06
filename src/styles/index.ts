@@ -12,6 +12,9 @@ export const CSS = `
   @keyframes streakGlow { 0%,100% { box-shadow: 0 0 8px rgba(200,75,49,0.2); } 50% { box-shadow: 0 0 20px rgba(200,75,49,0.4); } }
   @keyframes streakPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } }
   @keyframes micPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(200,75,49,0.3); } 50% { box-shadow: 0 0 0 10px rgba(200,75,49,0); } }
+  @keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+  @keyframes slideOutLeft { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+  @keyframes fadeOverlay { from { opacity: 0; } to { opacity: 1; } }
   input:focus { outline: none; border-color: #C84B31 !important; box-shadow: 0 0 0 3px rgba(200,75,49,0.08) !important; }
   button { cursor: pointer; transition: all 0.15s ease; }
   button:active { transform: scale(0.97); }
@@ -39,6 +42,26 @@ type Styles = Record<string, CSSProperties>;
 
 export const S: Styles = {
   root: { position: "relative", display: "flex", flexDirection: "column", height: "100vh", width: "100%", backgroundColor: C.bg, fontFamily: font, color: C.ink, overflow: "hidden" },
+  appShell: { position: "relative", display: "flex", flexDirection: "row", height: "100vh", width: "100%", backgroundColor: C.bg, fontFamily: font, color: C.ink, overflow: "hidden" },
+
+  sidebar: { width: 220, display: "flex", flexDirection: "column", borderRight: `1px solid ${C.border}`, backgroundColor: "rgba(250,247,242,0.97)", backdropFilter: "blur(12px)", flexShrink: 0, position: "relative", zIndex: 10 },
+  sidebarLogoArea: { padding: "18px 16px 14px", borderBottom: `1px solid ${C.border}` },
+  sidebarNav: { display: "flex", flexDirection: "column", gap: 2, padding: "10px", flex: 1, overflowY: "auto" },
+  sidebarNavBtn: { display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "9px 12px", borderRadius: 10, border: "none", background: "transparent", fontSize: 14, fontFamily: font, color: C.inkSoft, fontWeight: 500, textAlign: "left", cursor: "pointer" },
+  sidebarNavBtnActive: { backgroundColor: "rgba(200,75,49,0.08)", color: C.accent, fontWeight: 600 },
+  sidebarStats: { padding: "14px 16px", borderTop: `1px solid ${C.border}`, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" },
+
+  contentCol: { display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" },
+  mobileHeader: { position: "relative", zIndex: 10, padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: `1px solid ${C.border}`, backgroundColor: "rgba(250,247,242,0.95)", backdropFilter: "blur(12px)", gap: 8 },
+  hamburgerBtn: { display: "flex", flexDirection: "column", gap: 5, border: "none", background: "transparent", padding: 6, cursor: "pointer", flexShrink: 0 },
+  hamburgerLine: { width: 22, height: 2, backgroundColor: C.ink, borderRadius: 1, display: "block" },
+
+  menuOverlay: { position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.35)", zIndex: 100, animation: "fadeOverlay 0.18s ease" },
+  menuDrawer: { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: C.bg, zIndex: 101, display: "flex", flexDirection: "column", animation: "slideInLeft 0.22s ease" },
+  menuDrawerHeader: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "18px 16px 14px", borderBottom: `1px solid ${C.border}` },
+  menuDrawerNav: { display: "flex", flexDirection: "column", gap: 2, padding: "10px", flex: 1, overflowY: "auto" },
+  menuDrawerNavBtn: { display: "flex", alignItems: "center", gap: 12, width: "100%", padding: "12px 14px", borderRadius: 10, border: "none", background: "transparent", fontSize: 15, fontFamily: font, color: C.inkSoft, fontWeight: 500, textAlign: "left", cursor: "pointer" },
+  menuCloseBtn: { width: 32, height: 32, borderRadius: 8, border: `1px solid ${C.border}`, backgroundColor: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, color: C.inkSoft, cursor: "pointer", flexShrink: 0 },
   bgGrain: { position: "absolute", inset: 0, opacity: 0.04, backgroundImage: `radial-gradient(circle at 15% 50%, ${C.accent} 0%, transparent 50%), radial-gradient(circle at 85% 20%, ${C.warn} 0%, transparent 40%)`, pointerEvents: "none", animation: "breathe 10s ease-in-out infinite" },
   loadingWrap: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", backgroundColor: C.bg, gap: 12 },
   loadingChar: { fontSize: 48, animation: "pulse 1.5s ease-in-out infinite" },

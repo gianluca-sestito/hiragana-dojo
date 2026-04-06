@@ -5,7 +5,7 @@ export interface HiraganaChar {
 
 export interface HiraganaRow {
   label: string;
-  group: "basic" | "dakuon" | "handakuon";
+  group: "basic" | "dakuon" | "handakuon" | "yoon";
   chars: HiraganaChar[];
 }
 
@@ -57,6 +57,39 @@ export const HIRAGANA_ROWS: HiraganaRow[] = [
   ]},
   { label: "p", group: "handakuon", chars: [
     { h: "ぱ", r: "pa" }, { h: "ぴ", r: "pi" }, { h: "ぷ", r: "pu" }, { h: "ぺ", r: "pe" }, { h: "ぽ", r: "po" }
+  ]},
+  { label: "k", group: "yoon", chars: [
+    { h: "きゃ", r: "kya" }, { h: "きゅ", r: "kyu" }, { h: "きょ", r: "kyo" }
+  ]},
+  { label: "s", group: "yoon", chars: [
+    { h: "しゃ", r: "sha" }, { h: "しゅ", r: "shu" }, { h: "しょ", r: "sho" }
+  ]},
+  { label: "t", group: "yoon", chars: [
+    { h: "ちゃ", r: "cha" }, { h: "ちゅ", r: "chu" }, { h: "ちょ", r: "cho" }
+  ]},
+  { label: "n", group: "yoon", chars: [
+    { h: "にゃ", r: "nya" }, { h: "にゅ", r: "nyu" }, { h: "にょ", r: "nyo" }
+  ]},
+  { label: "h", group: "yoon", chars: [
+    { h: "ひゃ", r: "hya" }, { h: "ひゅ", r: "hyu" }, { h: "ひょ", r: "hyo" }
+  ]},
+  { label: "m", group: "yoon", chars: [
+    { h: "みゃ", r: "mya" }, { h: "みゅ", r: "myu" }, { h: "みょ", r: "myo" }
+  ]},
+  { label: "r", group: "yoon", chars: [
+    { h: "りゃ", r: "rya" }, { h: "りゅ", r: "ryu" }, { h: "りょ", r: "ryo" }
+  ]},
+  { label: "g", group: "yoon", chars: [
+    { h: "ぎゃ", r: "gya" }, { h: "ぎゅ", r: "gyu" }, { h: "ぎょ", r: "gyo" }
+  ]},
+  { label: "j", group: "yoon", chars: [
+    { h: "じゃ", r: "ja" }, { h: "じゅ", r: "ju" }, { h: "じょ", r: "jo" }
+  ]},
+  { label: "b", group: "yoon", chars: [
+    { h: "びゃ", r: "bya" }, { h: "びゅ", r: "byu" }, { h: "びょ", r: "byo" }
+  ]},
+  { label: "p", group: "yoon", chars: [
+    { h: "ぴゃ", r: "pya" }, { h: "ぴゅ", r: "pyu" }, { h: "ぴょ", r: "pyo" }
   ]},
 ];
 

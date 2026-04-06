@@ -13,7 +13,22 @@ A Japanese hiragana practice app built with React, TypeScript, and Vite. No back
 - **✨ Adjectives** — i-adjective and na-adjective conjugation drills
 - **🔢 Numbers** — hiragana number drills including simple arithmetic
 - **🎤 Speak** — speak Japanese out loud and get scored via the Web Speech API
-- **📋 Chart** — progress overview across all hiragana characters
+- **📋 Chart** — progress overview across all hiragana characters, including a weak-chars panel
+
+## Navigation
+
+The app is fully responsive: on desktop a sidebar shows all tabs and stats; on mobile a hamburger menu opens a full-screen animated drawer.
+
+## Character set
+
+All four hiragana groups are covered across every drill:
+
+| Group | Characters |
+|---|---|
+| 清音 Basic | あ–ん (46) |
+| 濁音 Dakuon | が–ぽ (25) |
+| 半濁音 Handakuon | ぱ–ぽ (5) |
+| 拗音 Yōon | きゃ–ぴょ (36) |
 
 ## Speak tab
 

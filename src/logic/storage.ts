@@ -8,6 +8,7 @@ export interface AppData {
   totalAnswered: number;
   totalCorrect: number;
   bestStreak: number;
+  currentStreak: number;
 }
 
 export const DEFAULT_DATA: AppData = {
@@ -15,6 +16,7 @@ export const DEFAULT_DATA: AppData = {
   totalAnswered: 0,
   totalCorrect: 0,
   bestStreak: 0,
+  currentStreak: 0,
 };
 
 const STORAGE_KEY = "hiragana-dojo-v2";

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { S, C, font } from "../styles";
 import { NUMBERS } from "../data/numbers";
 import type { JapaneseNumber } from "../data/numbers";

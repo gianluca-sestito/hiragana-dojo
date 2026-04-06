@@ -14,6 +14,9 @@ export function toRomaji(str: string): string {
 const ROMAJI_ALTS: Record<string, string[]> = {
   "shi": ["si"], "chi": ["ti"], "tsu": ["tu"], "fu": ["hu"],
   "ji": ["zi"], "zu": ["du", "dzu"], "wo": ["o"],
+  "sha": ["sya"], "shu": ["syu"], "sho": ["syo"],
+  "cha": ["tya", "cya"], "chu": ["tyu", "cyu"], "cho": ["tyo", "cyo"],
+  "ja": ["jya", "zya"], "ju": ["jyu", "zyu"], "jo": ["jyo", "zyo"],
 };
 
 export function isCorrectRomaji(char: HiraganaChar, input: string): boolean {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { S } from "../styles";
-import { HIRAGANA_ROWS } from "../data/hiragana";
+import { S, C } from "../styles";
+import { HIRAGANA_ROWS, ALL_HIRAGANA } from "../data/hiragana";
 import type { HiraganaChar } from "../data/hiragana";
 import type { CharStat } from "../logic/storage";
 
@@ -8,6 +8,7 @@ const GROUPS = [
   { key: "basic",      title: "Basic · 清音" },
   { key: "dakuon",     title: "Dakuon · 濁音 ゛" },
   { key: "handakuon",  title: "Handakuon · 半濁音 ゜" },
+  { key: "yoon",       title: "Yōon · 拗音" },
 ] as const;
 
 interface Props {
@@ -35,9 +36,10 @@ export default function ChartTab({ stats }: Props) {
             <div style={S.grid}>
               <div style={S.gridHeaderRow}>
                 <div style={S.rowLabel} />
-                {["a", "i", "u", "e", "o"].map(v => (
-                  <div key={v} style={S.colHead}>{v}</div>
-                ))}
+                {group.key === "yoon"
+                  ? ["ya", "yu", "yo"].map(v => <div key={v} style={S.colHead}>{v}</div>)
+                  : ["a", "i", "u", "e", "o"].map(v => <div key={v} style={S.colHead}>{v}</div>)
+                }
               </div>
               {rows.map((row, ri) => (
                 <div key={ri} style={S.gridRow}>
@@ -55,7 +57,7 @@ export default function ChartTab({ stats }: Props) {
                         ...(selected?.h === c.h ? S.cellSelected : {}),
                       }}
                     >
-                      {c.h && <span style={S.cellH}>{c.h}</span>}
+                      {c.h && <span style={{ ...S.cellH, fontSize: group.key === "yoon" ? 14 : 18 }}>{c.h}</span>}
                       {c.h && <span style={S.cellR}>{c.r}</span>}
                     </button>
                   ))}
@@ -65,6 +67,40 @@ export default function ChartTab({ stats }: Props) {
           </div>
         );
       })}
+
+      {(() => {
+        const weak = ALL_HIRAGANA
+          .filter(c => { const s = stats[c.h]; return s && s.total >= 3 && s.correct / s.total < 0.6; })
+          .sort((a, b) => (stats[a.h].correct / stats[a.h].total) - (stats[b.h].correct / stats[b.h].total));
+        if (weak.length === 0) return null;
+        return (
+          <div style={{ marginBottom: 16 }}>
+            <div style={S.groupTitle}>Weak Chars · 苦手</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
+              {weak.map(c => {
+                const s = stats[c.h];
+                const pct = Math.round(s.correct / s.total * 100);
+                return (
+                  <button
+                    key={c.h}
+                    onClick={() => setSelected(selected?.h === c.h ? null : c)}
+                    style={{
+                      ...S.cell,
+                      flex: "none", width: 58, height: 58, aspectRatio: "unset",
+                      backgroundColor: "rgba(200,75,49,0.06)",
+                      border: `1px solid rgba(200,75,49,0.25)`,
+                      ...(selected?.h === c.h ? S.cellSelected : {}),
+                    }}
+                  >
+                    <span style={{ ...S.cellH, fontSize: c.h.length > 1 ? 14 : 18 }}>{c.h}</span>
+                    <span style={{ ...S.cellR, color: C.accent, fontWeight: 600 }}>{pct}%</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
 
       {selected && (
         <div style={S.charDetail}>

@@ -10,22 +10,16 @@ import VerbsTab from "./tabs/VerbsTab";
 import AdjTab from "./tabs/AdjTab";
 import NumsTab from "./tabs/NumsTab";
 import SpeakTab from "./tabs/SpeakTab";
-
-type View = "quiz" | "fill" | "read" | "verbs" | "adj" | "nums" | "speak" | "chart";
-
-const NAV: Array<{ view: View; label: string }> = [
-  { view: "quiz",  label: "⚡ Speed" },
-  { view: "fill",  label: "🧩 Fill" },
-  { view: "read",  label: "📖 Read" },
-  { view: "verbs", label: "🔄 Verbs" },
-  { view: "adj",   label: "✨ Adj" },
-  { view: "nums",  label: "🔢 Nums" },
-  { view: "speak", label: "🎤 Speak" },
-  { view: "chart", label: "📋 Chart" },
-];
+import Sidebar from "./components/Sidebar";
+import MenuDrawer from "./components/MenuDrawer";
+import { useMediaQuery } from "./components/useMediaQuery";
+import type { View } from "./nav";
 
 export default function App() {
   const [view, setView] = useState<View>("quiz");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   const [data, setData] = useState<AppData>(() => {
     const saved = loadData();
     return saved ? { ...DEFAULT_DATA, ...saved } : DEFAULT_DATA;
@@ -52,46 +46,68 @@ export default function App() {
     : 0;
 
   return (
-    <div style={S.root}>
+    <div style={S.appShell}>
       <style>{CSS}</style>
       <div style={S.bgGrain} />
 
-      <header style={S.header}>
-        <div style={S.headerLeft}>
-          <span style={S.logo}>ひらがな道場</span>
-          <span style={S.logoSub}>hiragana dōjō</span>
-        </div>
-        <div style={S.headerRight}>
-          <div style={S.stat}>
-            <span style={S.statN}>{data.totalAnswered}</span>
-            <span style={S.statL}>total</span>
-          </div>
-          <div style={S.stat}>
-            <span style={S.statN}>{accuracy}%</span>
-            <span style={S.statL}>accuracy</span>
-          </div>
-        </div>
-      </header>
+      {isDesktop && (
+        <Sidebar
+          view={view}
+          onSelect={setView}
+          totalAnswered={data.totalAnswered}
+          accuracy={accuracy}
+        />
+      )}
 
-      <div style={S.viewToggle}>
-        {NAV.map(({ view: v, label }) => (
-          <button key={v} onClick={() => setView(v)}
-            style={{ ...S.viewBtn, ...(view === v ? S.viewBtnActive : {}) }}>
-            {label}
-          </button>
-        ))}
+      <div style={S.contentCol}>
+        {!isDesktop && (
+          <header style={S.mobileHeader}>
+            <button
+              style={S.hamburgerBtn}
+              aria-label="Open menu"
+              onClick={() => setMenuOpen(true)}
+            >
+              <span style={S.hamburgerLine} />
+              <span style={S.hamburgerLine} />
+              <span style={S.hamburgerLine} />
+            </button>
+            <div style={S.headerLeft}>
+              <span style={S.logo}>ひらがな道場</span>
+              <span style={S.logoSub}>hiragana dōjō</span>
+            </div>
+            <div style={S.headerRight}>
+              <div style={S.stat}>
+                <span style={S.statN}>{data.totalAnswered}</span>
+                <span style={S.statL}>total</span>
+              </div>
+              <div style={S.stat}>
+                <span style={S.statN}>{accuracy}%</span>
+                <span style={S.statL}>acc</span>
+              </div>
+            </div>
+          </header>
+        )}
+
+        <main style={S.main}>
+          {view === "quiz"  && <QuizTab data={data} update={update} />}
+          {view === "fill"  && <FillTab />}
+          {view === "read"  && <ReadTab />}
+          {view === "verbs" && <VerbsTab />}
+          {view === "adj"   && <AdjTab />}
+          {view === "nums"  && <NumsTab />}
+          {view === "speak" && <SpeakTab />}
+          {view === "chart" && <ChartTab stats={data.stats} />}
+        </main>
       </div>
 
-      <main style={S.main}>
-        {view === "quiz"  && <QuizTab data={data} update={update} />}
-        {view === "fill"  && <FillTab />}
-        {view === "read"  && <ReadTab />}
-        {view === "verbs" && <VerbsTab />}
-        {view === "adj"   && <AdjTab />}
-        {view === "nums"  && <NumsTab />}
-        {view === "speak" && <SpeakTab />}
-        {view === "chart" && <ChartTab stats={data.stats} />}
-      </main>
+      {!isDesktop && (
+        <MenuDrawer
+          open={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          view={view}
+          onSelect={(v) => { setView(v); setMenuOpen(false); }}
+        />
+      )}
     </div>
   );
 }

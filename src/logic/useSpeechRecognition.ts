@@ -1,8 +1,23 @@
 import { useState, useRef, useCallback } from "react";
 
-const SpeechAPI =
+interface SR {
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  continuous: boolean;
+  onstart: (() => void) | null;
+  onresult: ((e: SpeechRecognitionEvent) => void) | null;
+  onerror: ((e: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+  start(): void;
+  stop(): void;
+}
+
+type SRCtor = new () => SR;
+const SpeechAPI: SRCtor | undefined =
   typeof window !== "undefined"
-    ? (window.SpeechRecognition ?? (window as unknown as { webkitSpeechRecognition?: new () => SpeechRecognition }).webkitSpeechRecognition)
+    ? ((window as unknown as { SpeechRecognition?: SRCtor }).SpeechRecognition
+        ?? (window as unknown as { webkitSpeechRecognition?: SRCtor }).webkitSpeechRecognition)
     : undefined;
 
 export interface SpeechResult {
@@ -21,7 +36,7 @@ export interface SpeechRecognitionHook {
 export function useSpeechRecognition(): SpeechRecognitionHook {
   const [listening, setListening] = useState(false);
   const [interimText, setInterimText] = useState("");
-  const recRef = useRef<SpeechRecognition | null>(null);
+  const recRef = useRef<SR | null>(null);
   const keepAliveRef = useRef(false);
   const callbackRef = useRef<((r: SpeechResult) => void) | null>(null);
 
@@ -31,7 +46,7 @@ export function useSpeechRecognition(): SpeechRecognitionHook {
     callbackRef.current = cb;
   }, []);
 
-  const createRec = useCallback(() => {
+  const createRec = useCallback((): SR | null => {
     if (!SpeechAPI) return null;
     const rec = new SpeechAPI();
     rec.lang = "ja-JP";
