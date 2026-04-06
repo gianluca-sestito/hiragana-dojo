@@ -124,6 +124,34 @@ const VOCAB: SpeakItem[] = [
   { text: "スポーツ",   hint: "sports" },
 ];
 
+const ANIME_VOCAB: SpeakItem[] = [
+  { text: "なかま",     hint: "comrades / friends" },
+  { text: "ゆめ",       hint: "dream" },
+  { text: "きずな",     hint: "bond / tie" },
+  { text: "ちから",     hint: "power / strength" },
+  { text: "こころ",     hint: "heart / mind / soul" },
+  { text: "ゆうき",     hint: "courage / bravery" },
+  { text: "みらい",     hint: "future" },
+  { text: "まほう",     hint: "magic / spell" },
+  { text: "さくら",     hint: "cherry blossom" },
+  { text: "たたかい",   hint: "battle / fight" },
+  { text: "まけない",   hint: "won't lose / won't give up" },
+  { text: "たいせつ",   hint: "important / precious" },
+  { text: "なみだ",     hint: "tears" },
+  { text: "えがお",     hint: "smiling face" },
+  { text: "まもる",     hint: "to protect" },
+  { text: "ふしぎ",     hint: "mysterious / strange" },
+  { text: "かみ",       hint: "god / spirit / deity" },
+  { text: "いのち",     hint: "life" },
+  { text: "きせき",     hint: "miracle" },
+  { text: "おもいで",   hint: "memories" },
+  { text: "きぼう",     hint: "hope" },
+  { text: "こえ",       hint: "voice" },
+  { text: "けっしん",   hint: "determination / resolve" },
+  { text: "さだめ",     hint: "fate / destiny" },
+  { text: "むかし",     hint: "long ago / the past" },
+];
+
 const NUMBERS: SpeakItem[] = [
   { text: "いち",       hint: "1 — one" },
   { text: "さん",       hint: "3 — three" },
@@ -215,6 +243,13 @@ export const SPEAK_CATEGORIES: SpeakCategory[] = [
     emoji: "📝",
     desc: "Common nouns and everyday words",
     items: VOCAB,
+  },
+  {
+    id: "anime",
+    label: "Anime Words",
+    emoji: "🎌",
+    desc: "Words that appear in anime — courage, dreams, bonds…",
+    items: ANIME_VOCAB,
   },
   {
     id: "numbers",

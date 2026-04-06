@@ -1,4 +1,4 @@
-export type View = "quiz" | "fill" | "read" | "verbs" | "adj" | "nums" | "speak" | "chart";
+export type View = "quiz" | "fill" | "read" | "verbs" | "adj" | "nums" | "speak" | "anime" | "chart";
 
 export const NAV: Array<{ view: View; emoji: string; label: string }> = [
   { view: "quiz",  emoji: "⚡", label: "Speed Quiz" },
@@ -8,5 +8,6 @@ export const NAV: Array<{ view: View; emoji: string; label: string }> = [
   { view: "adj",   emoji: "✨", label: "Adjectives" },
   { view: "nums",  emoji: "🔢", label: "Numbers" },
   { view: "speak", emoji: "🎤", label: "Speak" },
+  { view: "anime", emoji: "🎌", label: "Anime" },
   { view: "chart", emoji: "📋", label: "Chart" },
 ];

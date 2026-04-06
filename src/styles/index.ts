@@ -47,7 +47,7 @@ export const S: Styles = {
   sidebar: { width: 220, display: "flex", flexDirection: "column", borderRight: `1px solid ${C.border}`, backgroundColor: "rgba(250,247,242,0.97)", backdropFilter: "blur(12px)", flexShrink: 0, position: "relative", zIndex: 10 },
   sidebarLogoArea: { padding: "18px 16px 14px", borderBottom: `1px solid ${C.border}` },
   sidebarNav: { display: "flex", flexDirection: "column", gap: 2, padding: "10px", flex: 1, overflowY: "auto" },
-  sidebarNavBtn: { display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "9px 12px", borderRadius: 10, border: "none", background: "transparent", fontSize: 14, fontFamily: font, color: C.inkSoft, fontWeight: 500, textAlign: "left", cursor: "pointer" },
+  sidebarNavBtn: { display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "9px 12px", borderRadius: 10, border: "none", background: "transparent", fontSize: 14, fontFamily: font, color: C.ink, fontWeight: 500, textAlign: "left", cursor: "pointer" },
   sidebarNavBtnActive: { backgroundColor: "rgba(200,75,49,0.08)", color: C.accent, fontWeight: 600 },
   sidebarStats: { padding: "14px 16px", borderTop: `1px solid ${C.border}`, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" },
 
@@ -60,7 +60,7 @@ export const S: Styles = {
   menuDrawer: { position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: C.bg, zIndex: 101, display: "flex", flexDirection: "column", animation: "slideInLeft 0.22s ease" },
   menuDrawerHeader: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", padding: "18px 16px 14px", borderBottom: `1px solid ${C.border}` },
   menuDrawerNav: { display: "flex", flexDirection: "column", gap: 2, padding: "10px", flex: 1, overflowY: "auto" },
-  menuDrawerNavBtn: { display: "flex", alignItems: "center", gap: 12, width: "100%", padding: "12px 14px", borderRadius: 10, border: "none", background: "transparent", fontSize: 15, fontFamily: font, color: C.inkSoft, fontWeight: 500, textAlign: "left", cursor: "pointer" },
+  menuDrawerNavBtn: { display: "flex", alignItems: "center", gap: 12, width: "100%", padding: "12px 14px", borderRadius: 10, border: "none", background: "transparent", fontSize: 15, fontFamily: font, color: C.ink, fontWeight: 500, textAlign: "left", cursor: "pointer" },
   menuCloseBtn: { width: 32, height: 32, borderRadius: 8, border: `1px solid ${C.border}`, backgroundColor: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, color: C.inkSoft, cursor: "pointer", flexShrink: 0 },
   bgGrain: { position: "absolute", inset: 0, opacity: 0.04, backgroundImage: `radial-gradient(circle at 15% 50%, ${C.accent} 0%, transparent 50%), radial-gradient(circle at 85% 20%, ${C.warn} 0%, transparent 40%)`, pointerEvents: "none", animation: "breathe 10s ease-in-out infinite" },
   loadingWrap: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", backgroundColor: C.bg, gap: 12 },
@@ -253,4 +253,38 @@ export const S: Styles = {
   speakItemHint: { fontSize: 13, color: C.inkMuted, fontWeight: 500, letterSpacing: "0.02em" },
   speakHintBtn: { fontSize: 11, color: C.inkMuted, background: "none", border: `1px dashed ${C.border}`, borderRadius: 8, padding: "3px 12px", fontFamily: font, cursor: "pointer" },
   speakItemText: { fontSize: 52, fontWeight: 500, lineHeight: 1.2, textAlign: "center", letterSpacing: "0.04em" },
+
+  // ── Anime tab ──────────────────────────────────────────────────────────────
+  animeWrap: { maxWidth: 480, margin: "0 auto", padding: "20px 16px", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, animation: "fadeIn 0.25s ease" },
+
+  // Picker
+  animeCatGrid: { display: "grid", gridTemplateColumns: "1fr", gap: 10, width: "100%" },
+  animeCatBtn: { display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 3, padding: "18px 20px", borderRadius: 16, border: `1.5px solid #E8E0D6`, backgroundColor: "#FFFFFF", fontFamily: "'Noto Sans JP', 'Outfit', sans-serif", cursor: "pointer", textAlign: "left", transition: "all 0.15s", width: "100%" },
+  animeCatEmoji: { fontSize: 28, lineHeight: 1, marginBottom: 2 },
+  animeCatLabel: { fontSize: 17, fontWeight: 600, color: "#2C2420" },
+  animeCatLabelJP: { fontSize: 13, color: "#B0A89E", fontFamily: "'Noto Sans JP', sans-serif" },
+  animeCatDesc: { fontSize: 13, color: "#7A706A", marginTop: 2 },
+
+  // Context badge (shown after correct vocab answer)
+  animeContextBadge: { fontSize: 11, fontWeight: 500, color: "#7C9AB5", backgroundColor: "rgba(124,154,181,0.10)", padding: "4px 12px", borderRadius: 8, textAlign: "center" as const },
+
+  // Dialogue / manga panel
+  animeDialogueCard: { backgroundColor: "#FFFFFF", borderRadius: 20, border: `1.5px solid #E8E0D6`, padding: "20px 18px", width: "100%", display: "flex", flexDirection: "column", gap: 14 },
+  animeSpeakerRow: { display: "flex", alignItems: "flex-start", gap: 10 },
+  animeSpeakerPillA: { fontSize: 11, fontWeight: 600, padding: "2px 8px", borderRadius: 10, flexShrink: 0, marginTop: 4, backgroundColor: "rgba(200,75,49,0.10)", color: "#C84B31", whiteSpace: "nowrap" as const },
+  animeSpeakerPillB: { fontSize: 11, fontWeight: 600, padding: "2px 8px", borderRadius: 10, flexShrink: 0, marginTop: 4, backgroundColor: "rgba(124,154,181,0.12)", color: "#5A7A96", whiteSpace: "nowrap" as const },
+  animeLineText: { fontSize: 19, fontWeight: 400, lineHeight: 1.8, letterSpacing: "0.04em", flex: 1 },
+  animeSourceTag: { fontSize: 11, color: "#B0A89E", fontStyle: "italic" as const, textAlign: "center" as const, width: "100%" },
+  animeTitleJP: { fontSize: 18, fontWeight: 600 },
+  animeTitleEN: { fontSize: 12, color: "#B0A89E" },
+
+  // Topic picker grid
+  animeTopicGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, width: "100%" },
+  animeTopicBtn: { padding: "12px 14px", borderRadius: 12, border: `1.5px solid #E8E0D6`, backgroundColor: "#FFFFFF", fontFamily: "'Noto Sans JP', 'Outfit', sans-serif", color: "#2C2420", fontWeight: 500, textAlign: "left" as const, display: "flex", flexDirection: "column", gap: 2 },
+
+  // Quote fill
+  animeQuoteCard: { backgroundColor: "#FFFFFF", borderRadius: 20, border: `1.5px solid #E8E0D6`, padding: "28px 20px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, transition: "all 0.3s" },
+  animeQuoteSource: { fontSize: 11, fontWeight: 600, color: "#7C9AB5", backgroundColor: "rgba(124,154,181,0.10)", padding: "3px 12px", borderRadius: 6, letterSpacing: "0.06em" },
+  animeQuoteSentence: { fontSize: 22, fontWeight: 500, lineHeight: 1.8, textAlign: "center" as const, wordBreak: "break-word" as const },
+  animeQuoteEn: { fontSize: 13, color: "#B0A89E", fontStyle: "italic" as const, textAlign: "center" as const, lineHeight: 1.6 },
 };

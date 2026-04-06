@@ -10,6 +10,7 @@ import VerbsTab from "./tabs/VerbsTab";
 import AdjTab from "./tabs/AdjTab";
 import NumsTab from "./tabs/NumsTab";
 import SpeakTab from "./tabs/SpeakTab";
+import AnimeTab from "./tabs/AnimeTab";
 import Sidebar from "./components/Sidebar";
 import MenuDrawer from "./components/MenuDrawer";
 import { useMediaQuery } from "./components/useMediaQuery";
@@ -96,6 +97,7 @@ export default function App() {
           {view === "adj"   && <AdjTab />}
           {view === "nums"  && <NumsTab />}
           {view === "speak" && <SpeakTab />}
+          {view === "anime" && <AnimeTab />}
           {view === "chart" && <ChartTab stats={data.stats} />}
         </main>
       </div>

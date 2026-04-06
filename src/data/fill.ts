@@ -37,6 +37,17 @@ export const FILL_POOL: FillExercise[] = [
   { sentence: "あさ ＿＿＿ をのみます。",            answer: "おちゃ",   options: ["おちゃ", "しずか", "いく", "あおい"],     translation: "I drink tea in the morning.",              hint: "tea" },
   { sentence: "きのう ＿＿＿ にいきました。",        answer: "びょういん", options: ["びょういん", "おいしい", "ねむい", "かう"], translation: "Yesterday I went to the hospital.",       hint: "hospital" },
   { sentence: "そのこは ＿＿＿ です。",              answer: "げんき",   options: ["げんき", "たべる", "でんしゃ", "なが"],   translation: "That child is energetic.",                hint: "energetic" },
+  // anime-themed vocab sentences
+  { sentence: "かれの ＿＿＿ は とても おおきい。",  answer: "ゆめ",     options: ["ゆめ", "みず", "いぬ", "あした"],         translation: "His dream is very big.",                  hint: "dream" },
+  { sentence: "わたしたちは ＿＿＿ だ。",            answer: "なかま",   options: ["なかま", "ほん", "さむい", "みせ"],        translation: "We are comrades.",                        hint: "comrades / friends" },
+  { sentence: "ふたりの ＿＿＿ は きれない。",       answer: "きずな",   options: ["きずな", "かわ", "おいしい", "でんしゃ"],  translation: "The bond between the two cannot be broken.", hint: "bond / tie" },
+  { sentence: "かれには つよい ＿＿＿ がある。",     answer: "ちから",   options: ["ちから", "りんご", "あおい", "えき"],      translation: "He has great strength.",                   hint: "power / strength" },
+  { sentence: "＿＿＿ があれば なんでも できる。",   answer: "ゆうき",   options: ["ゆうき", "てんき", "ねこ", "やすい"],      translation: "If you have courage, you can do anything.", hint: "courage / bravery" },
+  { sentence: "たいせつな ＿＿＿ を まもりたい。",   answer: "なかま",   options: ["なかま", "うみ", "たかい", "よむ"],        translation: "I want to protect my precious friends.",   hint: "comrades / friends" },
+  { sentence: "かれの ＿＿＿ は やさしい。",         answer: "こころ",   options: ["こころ", "くつ", "あつい", "かう"],        translation: "His heart is gentle.",                     hint: "heart / mind / soul" },
+  { sentence: "＿＿＿ を あきらめてはいけない。",    answer: "きぼう",   options: ["きぼう", "かぎ", "ねむい", "のむ"],        translation: "You must not give up hope.",               hint: "hope" },
+  { sentence: "あのひとの ＿＿＿ が きこえた。",    answer: "こえ",     options: ["こえ", "ほし", "おいしい", "でんしゃ"],    translation: "I heard that person's voice.",             hint: "voice" },
+  { sentence: "あのなつの ＿＿＿ は わすれない。",  answer: "おもいで", options: ["おもいで", "さかな", "あかい", "みせ"],    translation: "I won't forget the memories of that summer.", hint: "memories" },
 ];
 
 export const READ_SCENARIOS: ReadScenario[] = [
