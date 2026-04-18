@@ -48,6 +48,32 @@ export const FILL_POOL: FillExercise[] = [
   { sentence: "＿＿＿ を あきらめてはいけない。",    answer: "きぼう",   options: ["きぼう", "かぎ", "ねむい", "のむ"],        translation: "You must not give up hope.",               hint: "hope" },
   { sentence: "あのひとの ＿＿＿ が きこえた。",    answer: "こえ",     options: ["こえ", "ほし", "おいしい", "でんしゃ"],    translation: "I heard that person's voice.",             hint: "voice" },
   { sentence: "あのなつの ＿＿＿ は わすれない。",  answer: "おもいで", options: ["おもいで", "さかな", "あかい", "みせ"],    translation: "I won't forget the memories of that summer.", hint: "memories" },
+
+  // Numbers lesson: days of the week
+  { sentence: "きょうは ＿＿＿ です。",                    answer: "もくようび",   options: ["もくようび", "げつようび", "どようび", "すいようび"],   translation: "Today is Thursday.",                    hint: "木曜日 = Thursday" },
+  { sentence: "＿＿＿ は がっこうが やすみです。",          answer: "にちようび",   options: ["にちようび", "かようび", "きんようび", "もくようび"],   translation: "School is off on Sunday.",              hint: "日曜日 = Sunday" },
+  { sentence: "つぎの ＿＿＿ に えいがを みます。",         answer: "きんようび",   options: ["きんようび", "げつようび", "にちようび", "かようび"],   translation: "I'll watch a movie next Friday.",       hint: "金曜日 = Friday" },
+  { sentence: "＿＿＿ から しごとが はじまります。",         answer: "げつようび",   options: ["げつようび", "どようび", "すいようび", "きんようび"],   translation: "Work starts from Monday.",              hint: "月曜日 = Monday" },
+
+  // Numbers lesson: time words
+  { sentence: "＿＿＿ ともだちに あいます。",                answer: "あした",       options: ["あした", "きのう", "まえ", "つぎ"],                    translation: "I'll meet my friend tomorrow.",         hint: "tomorrow" },
+  { sentence: "＿＿＿ えいがを みました。",                  answer: "きのう",       options: ["きのう", "あした", "きょう", "まえ"],                  translation: "I watched a movie yesterday.",          hint: "yesterday" },
+  { sentence: "＿＿＿ は いい てんきです。",                 answer: "きょう",       options: ["きょう", "きのう", "あした", "つぎ"],                  translation: "The weather is nice today.",            hint: "today" },
+
+  // Numbers lesson: counters
+  { sentence: "すしを ＿＿＿ おねがいします。",              answer: "ふたつ",       options: ["ふたつ", "ふたり", "みっつ", "さんにん"],              translation: "Two sushi please.",                    hint: "2 things (generic counter)" },
+  { sentence: "ここに ＿＿＿ います。",                      answer: "ふたり",       options: ["ふたり", "ふたつ", "ひとつ", "さんにん"],              translation: "There are two people here.",            hint: "2 people" },
+  { sentence: "りんごを ＿＿＿ かいました。",                answer: "みっつ",       options: ["みっつ", "みんな", "さんにん", "さんじ"],              translation: "I bought three apples.",               hint: "3 things" },
+  { sentence: "きょうしつに がくせいが ＿＿＿ います。",      answer: "さんにん",     options: ["さんにん", "みっつ", "さんじ", "よにん"],              translation: "There are three students in class.",   hint: "3 people (～にん)" },
+
+  // Numbers lesson: key vocabulary
+  { sentence: "しごとが おおくて ＿＿＿ です。",             answer: "いそがしい",   options: ["いそがしい", "だいじょうぶ", "おいしい", "さむい"],     translation: "I have lots of work and I'm busy.",    hint: "busy = いそがしい" },
+  { sentence: "けがは ＿＿＿ ですか？",                      answer: "だいじょうぶ", options: ["だいじょうぶ", "いそがしい", "たのしい", "むずかしい"], translation: "Is the injury okay?",                  hint: "okay / fine" },
+
+  // Numbers lesson: あまり grammar
+  { sentence: "わたしは ＿＿＿ べんきょうしない。",           answer: "あまり",       options: ["あまり", "ぜんぜん", "とても", "すごく"],              translation: "I don't study very much.",             hint: "not very much (soft negation)" },
+  { sentence: "さいきん ＿＿＿ いそがしくない。",             answer: "あまり",       options: ["あまり", "ぜんぜん", "たいへん", "とても"],            translation: "I haven't been very busy lately.",     hint: "あまり + negative — milder than ぜんぜん" },
+  { sentence: "＿＿＿ やさしい ひとですね。",                 answer: "あまりにも",   options: ["あまりにも", "あまり", "ぜんぜん", "すこし"],           translation: "What an excessively kind person.",     hint: "あまりにも + affirmative = too/excessively" },
 ];
 
 export const READ_SCENARIOS: ReadScenario[] = [
